@@ -1,4 +1,5 @@
 import sys
+
 try:
     import speech_recognition as sr
     import pyttsx3
@@ -39,20 +40,29 @@ newVoiceRate = 195
 engine.setProperty('voice', voices[1].id)
 rate = engine.getProperty('rate')
 engine.setProperty('rate', newVoiceRate)
+
+
 def wish():
     hour = int(datetime.datetime.now().hour)
     tt = str(time.strftime("%I:%M %p"))
     if 0 <= hour <= 12:
         speak_text_cmd(f'Good Morning, its {tt}.')
+        speak_text_cmd('Jarvis here. How may i help you?')
     elif 12 <= hour <= 18:
         speak_text_cmd(f'Good Afternoon, its {tt}.')
+        speak_text_cmd('Jarvis here. How may i help you?')
     else:
         speak_text_cmd(f'Good Evening, its {tt}.')
-    speak_text_cmd('Jarvis here. How may i help you?')
+        speak_text_cmd('Jarvis here. How may i help you?')
+
+
+
 def speak_text_cmd(audio):
     engine.say(audio)
     print(audio)
     engine.runAndWait()
+
+
 def read_voice_cmd():
     voice_text = ''
     print('Listening...')
@@ -68,6 +78,7 @@ def read_voice_cmd():
     except sr.RequestError:
         print('Network Error.')
     return voice_text
+
 
 def start():
     wish()
@@ -96,13 +107,16 @@ def start():
                 speak_text_cmd(f'sir the laptop has {percent} percent battery and is {mode}')
             elif mode == 'not plugged in':
                 if percent >= 50:
-                    speak_text_cmd(f'sir the laptop has {percent} percent battery and is {mode}. i think you should plug it'
-                                   f' in after some time')
+                    speak_text_cmd(
+                        f'sir the laptop has {percent} percent battery and is {mode}. i think you should plug it'
+                        f' in after some time')
                 if 50 > percent > 20:
-                    speak_text_cmd(f'sir the laptop has {percent} percent battery and is {mode}. i think you should plug it'
-                                   f' in after some time')
+                    speak_text_cmd(
+                        f'sir the laptop has {percent} percent battery and is {mode}. i think you should plug it'
+                        f' in after some time')
                 if percent < 20:
-                    speak_text_cmd(f'warning! the laptop has {percent} percent battery and is {mode}. you should plug it now')
+                    speak_text_cmd(
+                        f'warning! the laptop has {percent} percent battery and is {mode}. you should plug it now')
         elif 'bye' in voice_note or "pip pip" in voice_note:
             speak_text_cmd(random.choice(farewell))
             exit()
@@ -157,7 +171,7 @@ def start():
                     l = int(a.replace('minutes', ''))
                     condition = True
                     speak_text_cmd('setting a timer for' + a)
-                    m = l*60
+                    m = l * 60
                 except:
                     speak_text_cmd('specify the minutes')
                     exit()
@@ -198,7 +212,7 @@ def start():
                     time.sleep(1)
                     s += 1
                     print(s, "second")
-                    if s == m+1:
+                    if s == m + 1:
                         speak_text_cmd('timer done')
                         continue
             continue
@@ -389,6 +403,8 @@ def start():
                 pyautogui.moveTo('JB2.png')
                 pyautogui.click()
             continue
+
+
 if __name__ == '__main__':
     start()
 
