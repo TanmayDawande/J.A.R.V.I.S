@@ -391,5 +391,3 @@ def start():
             continue
 if __name__ == '__main__':
     start()
-
-    #this is a new line added by me
