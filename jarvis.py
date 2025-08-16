@@ -22,10 +22,9 @@ except:
     print('Import Error Occurred')
     sys.exit()
 
-print('Version 1.1.1')
+print('Version 0.0.1')
 print('Creator:Tanmay Sunil Dawande')
-print('This product may not be sold or distributed without the permission of the creator')
-print('for more information, please contact Tanmay Dawande')
+
 speech = sr.Recognizer()
 
 try:
@@ -47,14 +46,12 @@ def wish():
     tt = str(time.strftime("%I:%M %p"))
     if 0 <= hour <= 12:
         speak_text_cmd(f'Good Morning, its {tt}.')
-        speak_text_cmd('Jarvis here. How may i help you?')
     elif 12 <= hour <= 18:
         speak_text_cmd(f'Good Afternoon, its {tt}.')
-        speak_text_cmd('Jarvis here. How may i help you?')
     else:
         speak_text_cmd(f'Good Evening, its {tt}.')
-        speak_text_cmd('Jarvis here. How may i help you?')
 
+    speak_text_cmd('Jarvis here. How may i help you?')
 
 
 def speak_text_cmd(audio):
